@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DebateForge</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg1"></div>
+<div class="bg2"></div>
+
+<div class="wrapper">
+
+<header class="hero">
+<h1>⚔ DebateForge</h1>
+<p>Multi-Agent AI Debate Arena</p>
+
+<div class="search-box">
+<input id="topic" placeholder="Try: Should AI replace teachers?">
+<button onclick="startDebate()">Debate</button>
+</div>
+</header>
+
+<section class="grid">
+
+<div class="card pro-card">
+<h2>🟢 Pro Agent</h2>
+<div id="proOutput">Arguments will appear here...</div>
+</div>
+
+<div class="card con-card">
+<h2>🔴 Con Agent</h2>
+<div id="conOutput">Counterarguments will appear here...</div>
+</div>
+
+<div class="card judge-card">
+<h2>👑 Judge Agent</h2>
+<div id="judgeOutput">Final verdict appears here...</div>
+</div>
+
+</section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
