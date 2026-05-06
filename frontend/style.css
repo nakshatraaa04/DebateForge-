@@ -222,6 +222,18 @@ font-size:42px;
 margin:0;
 }
 
+.winner-name.pro{
+    background:#10b981;
+    color:black;
+}
+
+.winner-name.con{
+    background:#ef4444;
+    color:white;
+    
+    
+}
+
 .winner-name{
 background:#7CFFB2;
 color:#04111d;
@@ -244,12 +256,104 @@ font-size:34px;
 margin-bottom:20px;
 }
 
-.winner-name{
-font-size:30px;
-font-weight:700;
-padding:15px;
+.winner-box{
+margin-top:20px;
+padding:50px 30px;
+border-radius:30px;
+text-align:center;
+position:relative;
+overflow:hidden;
+background:linear-gradient(135deg,#1e293b,#0f172a);
+box-shadow:0 20px 60px rgba(0,0,0,.5);
+animation:fadeIn .6s ease;
+}
+
+/* glowing border effect */
+.winner-box::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:30px;
+padding:2px;
+background:linear-gradient(135deg,#22c55e,#ef4444,#3b82f6);
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+animation:borderGlow 4s linear infinite;
+}
+
+/* trophy */
+.trophy{
+font-size:50px;
+margin-bottom:10px;
+animation:pop .5s ease;
+}
+
+/* title */
+.winner-title{
+font-size:34px;
 margin-bottom:20px;
-border-radius:18px;
+opacity:.9;
+}
+
+/* winner name box */
+.winner-name{
+display:inline-block;
+padding:20px 35px;
+border-radius:20px;
+font-size:26px;
+font-weight:700;
+margin-bottom:25px;
+animation:pop .4s ease;
+}
+
+/* dynamic colors */
+.winner-name.pro{
+background:#10b981;
+color:black;
+box-shadow:0 0 25px rgba(16,185,129,.6);
+}
+
+.winner-name.con{
+background:#ef4444;
+color:white;
+box-shadow:0 0 25px rgba(239,68,68,.6);
+}
+
+/* divider line */
+.vs-line{
+width:80px;
+height:4px;
+margin:15px auto 25px;
+border-radius:10px;
+background:linear-gradient(90deg,#22c55e,#ef4444);
+}
+
+/* reason text */
+.judge-reason{
+font-size:18px;
+line-height:1.8;
+opacity:.95;
+max-width:700px;
+margin:auto;
+}
+
+/* animations */
+@keyframes pop{
+from{transform:scale(.8); opacity:0;}
+to{transform:scale(1); opacity:1;}
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes borderGlow{
+0%{filter:hue-rotate(0deg);}
+100%{filter:hue-rotate(360deg);}
 }
 
 .judge-reason{

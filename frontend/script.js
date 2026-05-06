@@ -15,6 +15,7 @@ alert("Enter a debate topic");
 return;
 }
 
+// loading text
 document.getElementById("proOutput").innerHTML="Generating arguments...";
 document.getElementById("conOutput").innerHTML="Preparing rebuttal...";
 document.getElementById("judgeOutput").innerHTML="Judge analyzing...";
@@ -36,6 +37,21 @@ const proText = data.pro || data.pro_argument;
 const conText = data.con || data.con_argument;
 const judgeText = data.judge || data.judge_verdict;
 
+// ===============================
+// ✅ FIXED WINNER EXTRACTION
+// ===============================
+const match = judgeText.match(/Winner:\s*(Pro|Con)/i);
+
+let winner = "Unknown";
+
+if(match){
+winner = match[1]; // "Pro" or "Con"
+}
+
+// ===============================
+// UI OUTPUT
+// ===============================
+
 // bullet points
 document.getElementById("proOutput").innerHTML =
 "<ul>"+formatPoints(proText)+"</ul>";
@@ -43,35 +59,34 @@ document.getElementById("proOutput").innerHTML =
 document.getElementById("conOutput").innerHTML =
 "<ul>"+formatPoints(conText)+"</ul>";
 
-let winner="Tie";
+// winner styling class
+const winnerClass = winner.toLowerCase();
 
-if(judgeText.toLowerCase().includes("pro")){
-winner="Pro Agent 🟢";
-}
-else if(judgeText.toLowerCase().includes("con")){
-winner="Con Agent 🔴";
-}
+// remove "Winner:" line from reason
+const cleanReason = judgeText.replace(/Winner:\s*(Pro|Con)/i, "").trim();
 
 document.getElementById("judgeOutput").innerHTML =
 `
 <div class="winner-box">
-<h2>🏆 Debate Winner</h2>
+    <h2>🏆 Debate Winner</h2>
 
-<div class="winner-name">
-${winner}
-</div>
+    <div class="winner-name ${winnerClass}">
+        ${winner} Agent
+    </div>
 
-<div class="judge-reason">
-${judgeText}
+    <div class="judge-reason">
+        ${cleanReason}
+    </div>
 </div>
+`;
 
-</div>
-`;}
+}
 
 catch(error){
 console.error(error);
-document.getElementById("judgeOutput").innerHTML=
-"Connection error.";
+
+document.getElementById("judgeOutput").innerHTML =
+"Connection error. Check backend.";
 }
 
 }

@@ -6,13 +6,9 @@ class ConAgent(BaseAgent):
 
         prompt=f"""
 You are a skilled debater.
-
 Argue against:
-
 {topic}
-
-Give 3 counter arguments.
-"""
+Give 3 counter arguments."""   
 
         return self.get_completion(prompt)
     
