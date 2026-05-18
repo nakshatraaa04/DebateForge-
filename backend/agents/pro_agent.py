@@ -1,7 +1,7 @@
 from .base_agent import BaseAgent
 from backend.services.web_search import search_web
 
-class ConAgent(BaseAgent):
+class ProAgent(BaseAgent):
 
     def run(self, topic):
 
@@ -16,7 +16,7 @@ Topic:
 Reference Information:
 {web_data}
 
-Create arguments OPPOSING the topic.
+Create arguments SUPPORTING the topic.
 
 Rules:
 - Give exactly 3 arguments

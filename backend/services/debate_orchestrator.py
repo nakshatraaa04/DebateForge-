@@ -1,4 +1,4 @@
-from backend.agents.pros_agent import ProAgent
+from backend.agents.pro_agent import ProAgent
 from backend.agents.con_agent import ConAgent
 from backend.agents.judge_agent import JudgeAgent
 

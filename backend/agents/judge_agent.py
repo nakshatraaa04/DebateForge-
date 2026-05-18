@@ -2,39 +2,43 @@ from .base_agent import BaseAgent
 
 class JudgeAgent(BaseAgent):
 
-    def run(self,topic,pro,con):
+    def run(self, topic, pro, con):
 
         prompt = f"""
-You are a professional debate judge.
+You are a STRICT and UNBIASED debate judge.
 
-Your task is to critically compare BOTH sides and declare a winner.
+Topic:
+{topic}
 
-Topic: {topic}
-
---- PRO ARGUMENT ---
+Pro Arguments:
 {pro}
 
---- CON ARGUMENT ---
+Con Arguments:
 {con}
 
-Evaluation Criteria:
-1. Logical strength
-2. Use of evidence/examples
-3. Clarity and coherence
+Evaluate BOTH sides fairly.
+
+Scoring criteria:
+1. Logic (25%)
+2. Evidence (25%)
+3. Clarity (25%)
+4. Persuasiveness (25%)
 
 Instructions:
-- You MUST choose ONE winner (Pro or Con)
-- Do NOT default to Pro
-- Do NOT say both are equal
-- Prefer the side with stronger reasoning, not longer text
+- Do NOT favor negative arguments
+- Do NOT assume criticism is stronger
+- Give equal consideration
+- Assign scores independently
 
-Output STRICTLY in this format:
+Return ONLY in this format:
 
-Winner: Pro or Con
-Reason: <2-3 concise lines explaining why>
+Winner: [Pro Agent or Con Agent]
+
+Pro Score: X/10
+Con Score: X/10
+
+Reason:
+[short explanation]
 """
 
         return self.get_completion(prompt)
-    
-
-    
