@@ -163,7 +163,7 @@ transform:translateY(-8px);
 
 border:1px solid #10b981;
 
-transform:rotate(-1deg);
+transform:rotate(-0.7deg);
 
 grid-area:pro;
 
@@ -173,7 +173,7 @@ grid-area:pro;
 
 border:1px solid #ef4444;
 
-transform:rotate(1deg);
+transform:rotate(0.7deg);
 
 grid-area:con;
 

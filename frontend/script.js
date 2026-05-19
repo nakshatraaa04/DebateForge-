@@ -1,9 +1,20 @@
 function formatPoints(text){
 
+if(!text) return "";
+
 return text
-.split(/[\n•.-]+/)
+.replace(/\*\*/g,"")
+.split(/\n+|•/)
 .filter(item => item.trim() !== "")
-.map(item => "<li>"+item.trim()+"</li>")
+.map(item=>{
+
+let clean=item.trim()
+.replace(/^\d+\.\s*/,"")
+.replace(/^-\s*/,"");
+
+return "<li>"+clean+"</li>";
+
+})
 .join("");
 
 }
@@ -15,19 +26,13 @@ const topic=
 document.getElementById("topic")
 .value
 .trim();
-
-
 if(!topic){
-
 alert("Enter a debate topic");
-
 return;
-
 }
 
 
 // loading state
-
 document.getElementById(
 "proOutput"
 ).innerHTML="Generating arguments...";
